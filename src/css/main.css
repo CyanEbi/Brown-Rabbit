@@ -1,18 +1,101 @@
 body {
-    height: 100vh;
     display: flex;
-    background: linear-gradient(180deg, #f7214f 0, #c00d34 100%);
-    color: white;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-.wrapper{
-    text-align: center;
+    flex-direction: column;
+    gap: 40px;
+    margin: 0;
 }
 
-a{
+header {
+    background-color: black;
+}
+
+nav {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation_header {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+.links a {
     color: white;
-    margin-top: 15px;
+}
+
+main {
+    display: flex;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 40px;
+}
+
+.articles {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    gap: 40px;
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: start;
+    gap: 20px;
+}
+
+.aside {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.article_navigator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.divider {
+    display: block;
+    height: 1px;
+    background-color: lightgray;
+}
+
+.link_button {
     display: inline-block;
+    box-sizing: border-box;
+    min-width: 100px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid black;
+    color: black;
+}
+
+img {
+    object-fit: contain;
+}
+
+a {
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0px;
 }
