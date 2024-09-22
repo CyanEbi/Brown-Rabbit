@@ -92,6 +92,7 @@ article {
     text-align: center;
     border: 2px solid black;
     color: black;
+    cursor: pointer;
 }
 
 img {
