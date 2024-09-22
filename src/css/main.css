@@ -1,0 +1,18 @@
+body {
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(180deg, #f7214f 0, #c00d34 100%);
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper{
+    text-align: center;
+}
+
+a{
+    color: white;
+    margin-top: 15px;
+    display: inline-block;
+}
