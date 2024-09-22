@@ -57,6 +57,14 @@ article {
     gap: 20px;
 }
 
+.five_lines {
+    display: -webkit-box;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .aside {
     display: flex;
     flex: 1;
