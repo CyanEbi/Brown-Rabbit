@@ -99,6 +99,44 @@ img {
     object-fit: contain;
 }
 
+dialog {
+    border: none;
+    padding: 0px;
+}
+
+dialog::backdrop {
+    background-color: rgba(128, 128, 128, 0.6);
+}
+
+.dialog_content {
+    width: 1000px;
+    height: 700px;
+}
+
+.dialog_banner {
+    height: 300px;
+}
+
+.banner_img {
+    width: 1000px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.dialog_post {
+    padding: 25px;
+}
+
+.dialog_close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    background-color: black;
+}
+
 a {
     text-decoration: none;
 }
