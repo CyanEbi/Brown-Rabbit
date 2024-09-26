@@ -1,7 +1,6 @@
 body {
     display: flex;
     flex-direction: column;
-    gap: 40px;
     margin: 0;
 }
 
@@ -39,10 +38,17 @@ main {
     width: 80vw;
     margin-left: auto;
     margin-right: auto;
-    gap: 40px;
 }
 
 .articles {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px;
+}
+
+.article_list {
     display: flex;
     flex: 3;
     flex-direction: column;
@@ -70,6 +76,7 @@ article {
     flex: 1;
     flex-direction: column;
     gap: 40px;
+    margin: 40px;
 }
 
 .article_navigator {
@@ -128,6 +135,7 @@ dialog::backdrop {
 }
 
 .dialog_close {
+    cursor: pointer;
     position: absolute;
     top: 0;
     right: 0;
@@ -144,5 +152,18 @@ a {
 h2 {
     font-size: 35px;
     font-family: 'Times New Roman', Times, serif;
+    margin: 4px;
+}
+
+h3 {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0px;
+}
+
+h6 {
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 18px 0px;
+    color: #707070;
 }
