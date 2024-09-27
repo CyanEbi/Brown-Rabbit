@@ -1,3 +1,8 @@
+:root {
+    --grey: #707070;
+    --lightGrey: #DDDDDD;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -31,6 +36,38 @@ nav {
 
 .links a {
     color: white;
+}
+
+.slides {
+    position: relative;
+}
+
+.slide {
+    width: 90vw;
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+.slide_nav_buttons {
+    position: absolute;
+    bottom: 60px;
+    right: 100px;
+}
+
+.quote_container {
+    position: absolute;
+    translate: 136px -100px;
+    height: 200px;
+    width: 600px;
+    background-color: black;
+    align-content: center;
+    padding: 0px 80px;
+}
+
+.quote {
+    color: white;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 main {
@@ -153,12 +190,6 @@ h2 {
     font-size: 35px;
     font-family: 'Times New Roman', Times, serif;
     margin: 4px;
-}
-
-h3 {
-    font-size: 30px;
-    font-family: 'Times New Roman', Times, serif;
-    margin: 0px;
 }
 
 h6 {

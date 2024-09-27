@@ -1,4 +1,7 @@
-var posts;
+var articleList;
+var slideNum = 0;
+var totalSlides;
+var pageNum = 0;
 var totalPages;
 
 window.onload = function () {
@@ -6,11 +9,13 @@ window.onload = function () {
     fetch('posts.json')
         .then(response => response.json())
         .then(json => {
-            posts = json;
-            totalPages = Math.ceil(posts.length/4);
+            articleList = json;
+            totalPages = Math.ceil(articleList.length/4);
             document.getElementById('total_pages').innerText = `${totalPages}`;
             loadPosts(0)
         });
+    
+    totalSlides = document.getElementsByClassName('slide').length;
 
     const articles = document.getElementById('article_list').children;
     for (var i=0; i<articles.length; i++) {
@@ -35,6 +40,22 @@ window.onload = function () {
     }
 };
 
+function switchSlide(direction) {
+    if ((direction != -1) && (direction != 1)) {
+        return;
+    }
+    
+    const slides = document.getElementsByClassName('slide');
+    slides[slideNum].style.display = 'none';
+
+    slideNum = modulo(slideNum + direction, totalSlides);
+    slides[slideNum].style.display = '';
+}
+
+function modulo(dividend, divisor) {
+    return ((dividend % divisor) + divisor) % divisor
+}
+
 function loadPosts(page) {
     if ((page < 0) || (page >= totalPages)) {
         return;
@@ -49,9 +70,9 @@ function loadPosts(page) {
     }
 
     const first = page*4;
-    const last = Math.min(page*4+4, posts.length);
+    const last = Math.min(page*4+4, articleList.length);
     for(var i=first; i<last; i++) {
-        const content = posts[i];
+        const content = articleList[i];
         const article = document.createElement('article');
         article.id = `post${i}`;
         article.innerHTML = `
@@ -92,7 +113,7 @@ function loadPosts(page) {
 }
 
 function readMore(post) {
-    const content = posts[post];
+    const content = articleList[post];
     const dialog = document.getElementById('post_dialog');
     dialog.innerHTML = `
         <div class="dialog_content">
