@@ -80,8 +80,8 @@ function loadPosts(page) {
             <div class="post_content">
                 <h2>${content.title}</h2>
                 <h6>Published ${content.published}</h6>
-                <p class="five_lines">${content.text}</p>
-                <a class="link_button" onclick="readMore('${i}')">Read more</a>
+                <p class="five-lines">${content.text}</p>
+                <button onclick="readMore('${i}')">Read more</button>
             </div>
         `;
         postList.appendChild(article);
@@ -116,18 +116,17 @@ function readMore(post) {
     const content = articleList[post];
     const dialog = document.getElementById('post_dialog');
     dialog.innerHTML = `
-        <div class="dialog_content">
-            <div class="dialog_banner">
-                <img src="${content.img}" class="banner_img">
-                <img src="assets/icons/close.svg" class="dialog_close" onclick="closeDialog()">
-            </div>
-            <div class="dialog_post">
-                <h2>${content.title}</h2>
-                <h6>Published ${content.published}</h6>
-                <p>${content.text}</p>
-            </div>
-            </div>
-            
+        <div class="dialog-close-wrapper">
+            <img src="assets/icons/close.svg" class="close-button" onclick="closeDialog()">
+        </div>
+        <div class="dialog-banner">
+            <img src="${content.img}">
+        </div>
+        <div class="dialog-post">
+            <h2>${content.title}</h2>
+            <h6>Published ${content.published}</h6>
+            <p>${content.text}</p>
+        </div>
         </div>
     `;
     dialog.showModal();

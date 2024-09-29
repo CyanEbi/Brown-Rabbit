@@ -8,26 +8,28 @@
 
     <body>
         <header>
-            <nav>
-                <img src="assets/logo-white.svg">
-                <div class="navigation_header">
-                    <div id="nav_head_top" class="links">
-                        <input type="search" placeholder="search">
-                        <a href="#"><img src="assets/icons/linkedin-white.svg"></a>
-                        <a href="#"><img src="assets/icons/twitter-white.svg"></a>
-                        <a href="#"><img src="assets/icons/instagram-white.svg"></a>
-                        <a href="#"><img src="assets/icons/facebook-white.svg"></a>
+            <div class="background">
+                <nav>
+                    <img src="assets/logo-white.svg">
+                    <div class="link-block">
+                        <ul>
+                            <li><input type="text" placeholder="search"></li>
+                            <li><a href="#"><img src="assets/icons/linkedin-white.svg"></a></li>
+                            <li><a href="#"><img src="assets/icons/twitter-white.svg"></a></li>
+                            <li><a href="#"><img src="assets/icons/instagram-white.svg"></a></li>
+                            <li><a href="#"><img src="assets/icons/facebook-white.svg"></a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Nordic roaster</a></li>
+                            <li><a href="#">Results</a></li>
+                            <li><a href="#">Links</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
                     </div>
-                    <div id="nav_head_bot" class="links">
-                        <a href="#">About us</a>
-                        <a href="#">Events</a>
-                        <a href="#">Nordic roaster</a>
-                        <a href="#">Results</a>
-                        <a href="#">Links</a>
-                        <a href="#">Contact</a>
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </header>
 
         <div id="slides" class="slides">
@@ -56,25 +58,27 @@
         </div>
 
         <main id="main">
-            <div id="articles" class="articles">
-                <section id="article_list" class="article_list">
-                </section>
+            <!-- Articles -->
+            <div id="articles" class="content-column">
+                <section id="article_list" class="content-column"></section> <!-- Filled by js -->
 
                 <div class="divider"></div>
 
-                <div class="article_navigator">
-                    <button id="button_prev" class="link_button" disabled>Previous</button>
+                <div class="article-navigator">
+                    <button id="button_prev" disabled>Previous</button>
                     <span>Page <span id="current_page">1</span> of <span id="total_pages">1</span></span>
-                    <button id="button_next" class="link_button" disabled>Next</button>
+                    <button id="button_next" disabled>Next</button>
                 </div>
+
                 <div class="divider"></div>
             </div>
 
-            <div class="aside">
+            <!-- Aside -->
+            <div class="content-column">
                 <div>
                     <h2>WBC Shop</h2>
                     <p>Your shopping cart is empty</p>
-                    <a href="#" class="link_button">Visit the shop</a>
+                    <button>Visit the shop</button>
                 </div>
                 <div class="divider"></div>
                 <div>
@@ -83,7 +87,7 @@
                     <p>Copenhagen, Denmark</p>
                     <p>Dates: 25th - 27th August 2021</p>
                     <p>Theme: SENSORY</p>
-                    <a href="#" class="link_button">Sign up now</a>
+                    <button>Sign up now</button>
                 </div>
                 <div class="divider"></div>
                 <div>
