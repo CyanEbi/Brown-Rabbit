@@ -88,13 +88,13 @@ button {
     border: 2px solid black;
     background-color: white;
     cursor: pointer;
-    transition: 200ms;
+    transition: 0.2s;
 }
 
 button:enabled:hover {
     background-color: black;
     color: white;
-    transition: 200ms;
+    transition: 0.2s;
 }
 
 button:disabled {
@@ -195,28 +195,45 @@ dialog::backdrop {
 
 
 
-
+.slides-wrapper {
+    position: relative;
+    width: calc(100vw - 2*var(--side-margins));
+    height: 40rem;
+    overflow: hidden;
+    margin: 0 var(--side-margins);
+}
 
 .slides {
-    position: relative;
+    position: absolute;
+    display: flex;
+    width: max-content;
+}
+
+.slides.transitioning {
+    transition: 0.5s ease-in-out;
 }
 
 .slide {
-    width: 90vw;
-    margin: auto;
+    width: calc(100vw - 2*var(--side-margins));
+    height: 35rem;
     padding-bottom: 100px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
 .slide_nav_buttons {
     position: absolute;
     bottom: 60px;
-    right: 100px;
 }
 
 .quote_container {
     position: absolute;
-    translate: 136px -100px;
-    height: 200px;
+    translate: 136px -5rem;
+    height: 10rem;
     width: 600px;
     background-color: black;
     align-content: center;
