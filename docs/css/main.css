@@ -166,7 +166,7 @@ main {
 .content-column {
     display: flex;
     flex-direction: column;
-    min-width: 18rem;
+    min-width: 24rem;
     gap: var(--small-gap);
 }
 
@@ -214,6 +214,28 @@ article {
 .sponsor-grid {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
+}
+
+
+/* || Footer */
+
+footer {
+    background-color: black;
+    margin: 0 var(--side-margins);
+    padding: 4rem var(--side-margins);
+}
+
+.content-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: var(--big-gap);
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 75px);
+    justify-content: center;
+    gap: var(--small-gap);
 }
 
 
