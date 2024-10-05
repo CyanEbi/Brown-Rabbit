@@ -1,4 +1,5 @@
-var articleList;
+const searchBar = document.getElementById('search-bar');
+const searchResults = document.getElementById('search-results');
 
 const slides = document.getElementById('slides');
 const slideWidth = slides.children[0].offsetWidth;
@@ -8,8 +9,11 @@ var currentSlideOffset;
 var isMouseDown = false;
 var dragInitX;
 
+var articleList;
 var pageIdx = 0;
 var totalPages;
+
+const dialog = document.getElementById('post_dialog');
 
 window.onload = function () {
 
@@ -32,6 +36,13 @@ window.onload = function () {
     slides.addEventListener('transitionend', onTransitionEnd);
     jumpToSlide(0);
 
+    document.addEventListener('click', (event) => {
+        console.log('clicked');
+        if (!searchResults.contains(event.target) & !dialog.contains(event.target)) {
+            searchResults.style.display = 'none';
+        }
+    })
+
     const articles = document.getElementById('article_list').children;
     for (var i=0; i<articles.length; i++) {
         if (i>=4) {
@@ -39,7 +50,6 @@ window.onload = function () {
         }
     }
     
-    const dialog = document.getElementById('post_dialog');
     dialog.addEventListener('click', (event) => {
         if (event.target === dialog) {
             dialog.close();
@@ -54,6 +64,47 @@ window.onload = function () {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 };
+
+function search() {
+    const value = searchBar.value.toLowerCase();
+
+    if (value.trim() == '') {
+        searchResults.style.display = 'none'
+    } else {
+        while(searchResults.firstChild) {
+            searchResults.removeChild(searchResults.lastChild);
+        }
+        searchResults.style.display = ''
+
+        for (var i=0; i<articleList.length; i++) {
+            if (articleList[i].title.toLowerCase().includes(value) |
+                articleList[i].text.toLowerCase().includes(value)) {
+                const searchResult = document.createElement('div');
+                searchResult.classList.add('search-result');
+                const idx = i;
+                searchResult.onclick = () => readMore(idx);
+                searchResult.innerHTML = `
+                    <h4>${articleList[i].title}</h2>
+                    <p>Published ${articleList[i].published}</p>
+                    <p class="two-lines">${articleList[i].text}</p>
+                `
+                searchResults.appendChild(searchResult);
+
+                const divider = document.createElement('div');
+                divider.classList.add('divider');
+                searchResults.appendChild(divider);
+            }
+        }
+
+        if (searchResults.children.length > 0) {
+            searchResults.removeChild(searchResults.lastChild);
+        } else {
+            searchResults.innerHTML = 'No results found';
+        }
+    }
+
+    
+}
 
 function onDragStart(e) {
     slides.classList.remove('transitioning');
@@ -191,7 +242,7 @@ function loadPosts(page) {
 
 function readMore(post) {
     const content = articleList[post];
-    const dialog = document.getElementById('post_dialog');
+    
     dialog.innerHTML = `
         <div class="dialog-close-wrapper">
             <img src="assets/icons/close.svg" class="close-button" onclick="closeDialog()">

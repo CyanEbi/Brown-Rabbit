@@ -17,6 +17,18 @@ h2 {
     margin: 4px;
 }
 
+h3 {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 4px;
+}
+
+h4 {
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 4px;
+}
+
 h6 {
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
@@ -77,6 +89,29 @@ input[type=text] {
     background-position: left center;
     border: 0;
     border-bottom: 1px solid white;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-results {
+    position: absolute;
+    z-index: 1;
+    flex-direction: column;
+    left: 0;
+    width: 24rem;
+    max-height: 60vh;
+    overflow: scroll;
+    padding: 0 var(--small-gap);
+    background-color: black;
+    color: white;
+    border: 1px solid var(--light-grey);
+}
+
+.search-result {
+    cursor: pointer;
+    margin: 2rem 0;
 }
 
 
@@ -188,6 +223,14 @@ article {
     overflow: hidden;
 }
 
+.two-lines {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .article-navigator {
     display: flex;
     justify-content: space-between;
@@ -196,7 +239,7 @@ article {
 
 .divider {
     display: block;
-    height: 1px;
+    min-height: 1px;
     background-color: lightgray;
 }
 

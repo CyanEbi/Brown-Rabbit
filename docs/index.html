@@ -13,7 +13,12 @@
                     <img src="assets/logo-white.svg">
                     <div class="link-block">
                         <ul>
-                            <li><input type="text" placeholder="search"></li>
+                            <li>
+                                <div class="search-container">
+                                    <input type="text" id="search-bar" placeholder="search" onkeyup="search()">
+                                    <div id="search-results" class="search-results" style="display: none;"></div>
+                                </div>
+                            </li>
                             <li><a href="#"><img src="assets/icons/linkedin-white.svg"></a></li>
                             <li><a href="#"><img src="assets/icons/twitter-white.svg"></a></li>
                             <li><a href="#"><img src="assets/icons/instagram-white.svg"></a></li>
@@ -63,7 +68,8 @@
         <main id="main">
             <!-- Articles -->
             <div id="articles" class="content-column">
-                <section id="article_list" class="content-column"></section> <!-- Filled by js -->
+                <!-- Filled by js -->
+                <section id="article_list" class="content-column"></section>
 
                 <div class="divider"></div>
 
