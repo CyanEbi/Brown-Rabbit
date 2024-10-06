@@ -192,16 +192,26 @@ button:disabled {
     cursor: default;
 }
 
-main {
+.main-content {
     display: flex;
+    flex-wrap: wrap;
     margin: 4rem var(--side-margins);
     gap: var(--big-gap);
+}
+
+main {
+    flex: 3;
+    min-width: 35rem;
+}
+
+aside {
+    flex: 1;
+    min-width: 20rem;
 }
 
 .content-column {
     display: flex;
     flex-direction: column;
-    min-width: 24rem;
     gap: var(--small-gap);
 }
 

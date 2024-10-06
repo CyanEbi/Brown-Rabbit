@@ -37,7 +37,6 @@ window.onload = function () {
     jumpToSlide(0);
 
     document.addEventListener('click', (event) => {
-        console.log('clicked');
         if (!searchResults.contains(event.target) & !dialog.contains(event.target)) {
             searchResults.style.display = 'none';
         }
@@ -168,7 +167,6 @@ function onTransitionEnd() {
     slides.classList.remove('transitioning');
     const moduloIdx = modulo(slideIdx, totalSlides);
     if (slideIdx != moduloIdx) {
-        console.log(`Jump from ${slideIdx} to ${moduloIdx}`);
         jumpToSlide(moduloIdx);
     }
     
