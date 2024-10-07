@@ -154,13 +154,12 @@ input[type=text] {
 }
 
 .quote_container {
-    position: absolute;
-    translate: 5rem -5rem;
-    height: 10rem;
-    width: 35rem;
+    translate: 0 -5rem;
+    max-width: 35rem;
     background-color: black;
     align-content: center;
-    padding: 0 5rem;
+    padding: 1rem 5rem;
+    margin: 0 5rem;
 }
 
 .quote {
