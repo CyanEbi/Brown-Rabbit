@@ -2,7 +2,7 @@ const searchBar = document.getElementById('search-bar');
 const searchResults = document.getElementById('search-results');
 
 const slides = document.getElementById('slides');
-const slideWidth = slides.children[0].offsetWidth;
+var slideWidth = slides.children[0].offsetWidth;
 var slideIdx = 0;
 var totalSlides;
 var currentSlideOffset;
@@ -35,6 +35,8 @@ window.onload = function () {
     document.addEventListener('mouseup', onDragEnd);
     slides.addEventListener('transitionend', onTransitionEnd);
     jumpToSlide(0);
+    
+    window.addEventListener('resize', onResize);
 
     document.addEventListener('click', (event) => {
         if (!searchResults.contains(event.target) & !dialog.contains(event.target)) {
@@ -180,6 +182,12 @@ function jumpToSlide(idx) {
 
 function modulo(dividend, divisor) {
     return ((dividend % divisor) + divisor) % divisor
+}
+
+function onResize() {
+    slideWidth = slides.children[0].offsetWidth;
+    currentSlideOffset = -(slideIdx+1)*slideWidth;
+    slides.style.left = `${currentSlideOffset}px`;
 }
 
 function loadPosts(page) {
