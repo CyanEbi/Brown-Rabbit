@@ -7,6 +7,11 @@
     --big-gap: 6rem;
 }
 
+/* This element is needed for the page to take up the full width on mobile */
+.site-wrapper {
+    overflow-x: hidden;
+}
+
 a {
     text-decoration: none;
 }
@@ -57,6 +62,10 @@ nav {
     justify-content: space-between;
     height: var(--header-height);
     margin: 0 var(--side-margins);
+
+    img {
+        min-width: 0;
+    }
     
     .link-block {
         display: flex;
@@ -73,6 +82,7 @@ ul {
 
 li {
     float: left;
+    white-space: nowrap;
 
     a {
         color: white;
