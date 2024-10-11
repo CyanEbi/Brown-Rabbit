@@ -13,7 +13,12 @@ var articleList;
 var pageIdx = 0;
 var totalPages;
 
-const dialog = document.getElementById('post_dialog');
+const searchDialog = document.getElementById('search-dialog');
+const searchDialogBar = document.getElementById('search-dialog-bar');
+const searchDialogResults = document.getElementById('search-dialog-results');
+
+const navDialog = document.getElementById('nav-dialog');
+const articleDialog = document.getElementById('article-dialog');
 
 window.onload = function () {
 
@@ -39,7 +44,7 @@ window.onload = function () {
     window.addEventListener('resize', onResize);
 
     document.addEventListener('click', (event) => {
-        if (!searchResults.contains(event.target) & !dialog.contains(event.target)) {
+        if (!searchResults.contains(event.target) & !articleDialog.contains(event.target)) {
             searchResults.style.display = 'none';
         }
     })
@@ -51,9 +56,9 @@ window.onload = function () {
         }
     }
     
-    dialog.addEventListener('click', (event) => {
-        if (event.target === dialog) {
-            dialog.close();
+    articleDialog.addEventListener('click', (event) => {
+        if (event.target === articleDialog) {
+            articleDialog.close();
         }
     });
     
@@ -66,16 +71,28 @@ window.onload = function () {
     }
 };
 
-function search() {
-    const value = searchBar.value.toLowerCase();
+function search(source) {
+    var resultsDest;
+    var value;
+    
+    switch (source) {
+        case 'bar':
+            value = searchBar.value.toLowerCase();
+            resultsDest = searchResults;
+            break;
+        case 'dialog':
+            value = searchDialogBar.value.toLowerCase();
+            resultsDest = searchDialogResults;
+            break;
+    }
 
     if (value.trim() == '') {
-        searchResults.style.display = 'none'
+        resultsDest.style.display = 'none'
     } else {
-        while(searchResults.firstChild) {
-            searchResults.removeChild(searchResults.lastChild);
+        while(resultsDest.firstChild) {
+            resultsDest.removeChild(resultsDest.lastChild);
         }
-        searchResults.style.display = ''
+        resultsDest.style.display = ''
 
         for (var i=0; i<articleList.length; i++) {
             if (articleList[i].title.toLowerCase().includes(value) |
@@ -89,22 +106,34 @@ function search() {
                     <p>Published ${articleList[i].published}</p>
                     <p class="two-lines">${articleList[i].text}</p>
                 `
-                searchResults.appendChild(searchResult);
+                resultsDest.appendChild(searchResult);
 
                 const divider = document.createElement('div');
                 divider.classList.add('divider');
-                searchResults.appendChild(divider);
+                resultsDest.appendChild(divider);
             }
         }
 
-        if (searchResults.children.length > 0) {
-            searchResults.removeChild(searchResults.lastChild);
+        if (resultsDest.children.length > 0) {
+            resultsDest.removeChild(resultsDest.lastChild);
         } else {
-            searchResults.innerHTML = 'No results found';
+            resultsDest.innerHTML = 'No results found';
         }
     }
+}
 
-    
+function showSearchDialog() {
+    searchDialog.showModal();
+    searchDialogBar.value = '';
+    search('dialog');
+}
+
+function showNavDialog() {
+    navDialog.showModal();
+}
+
+function closeNavDialog() {
+    navDialog.close();
 }
 
 function onDragStart(e) {
@@ -215,7 +244,7 @@ function loadPosts(page) {
                 <h2>${content.title}</h2>
                 <h6>Published ${content.published}</h6>
                 <p class="five-lines">${content.text}</p>
-                <button onclick="readMore('${i}')">Read more</button>
+                <button class="border-button" onclick="readMore('${i}')">Read more</button>
             </div>
         `;
         postList.appendChild(article);
@@ -249,24 +278,24 @@ function loadPosts(page) {
 function readMore(post) {
     const content = articleList[post];
     
-    dialog.innerHTML = `
+    articleDialog.innerHTML = `
         <div class="dialog-close-wrapper">
-            <img src="assets/icons/close.svg" class="close-button" onclick="closeDialog()">
+            <img src="assets/icons/close.svg" class="close-button" onclick="closeArticleDialog()">
         </div>
-        <div class="dialog-banner">
+        <div class="article-dialog-banner">
             <img src="${content.img}">
         </div>
-        <div class="dialog-post">
+        <div class="article-dialog-post">
             <h2>${content.title}</h2>
             <h6>Published ${content.published}</h6>
             <p>${content.text}</p>
         </div>
         </div>
     `;
-    dialog.showModal();
-    dialog.scrollTo({top: 0});
+    articleDialog.showModal();
+    articleDialog.scrollTo({top: 0});
 }
 
-function closeDialog() {
-    document.getElementById('post_dialog').close();
+function closeArticleDialog() {
+    articleDialog.close();
 }

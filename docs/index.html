@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1" />
         <title>Brown rabbit test</title>
         <link rel="stylesheet" href="css/main.css" type="text/css" >
     </head>
@@ -16,7 +17,7 @@
                             <ul>
                                 <li>
                                     <div class="search-container">
-                                        <input type="text" id="search-bar" placeholder="search" onkeyup="search()">
+                                        <input type="text" id="search-bar" placeholder="search" onkeyup="search('bar')">
                                         <div id="search-results" class="search-results" style="display: none;"></div>
                                     </div>
                                 </li>
@@ -34,6 +35,42 @@
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
+                        <div class="mobile-nav">
+                            <button class="image-button" onclick="showSearchDialog()">
+                                <img src="assets/icons/search.svg">
+                            </button>
+                            <button class="image-button" onclick="showNavDialog()">
+                                <img src="assets/icons/actual-burger-menu.svg">
+                            </button>
+                        </div>
+                        <dialog class="black-dialog" id="search-dialog">
+                            <div class="black-dialog-content">
+                                <div class="search-button-container">
+                                    <img src="assets/icons/search.svg" id="search-button" class="image-button search-button">
+                                </div>
+                                <input type="text" id="search-dialog-bar" placeholder="search" onkeyup="search('dialog')">
+                                <div id="search-dialog-results" class="search-dialog-results" style="display: none;"></div>
+                            </div>
+                        </dialog>
+                        <dialog class="black-dialog" id="nav-dialog">
+                            <div class="black-dialog-content">
+                                <div class="close-button-container">
+                                    <img src="assets/icons/close.svg" class="image-button" onclick="closeNavDialog()">
+                                </div>
+                                <a href="#"><h2>About us</h2></a>
+                                <a href="#"><h2>Events</h2></a>
+                                <a href="#"><h2>Nordic roaster</h2></a>
+                                <a href="#"><h2>Results</h2></a>
+                                <a href="#"><h2>Links</h2></a>
+                                <a href="#"><h2>Contact</h2></a>
+                                <ul>
+                                    <li><a href="#"><img src="assets/icons/linkedin-white.svg"></a></li>
+                                    <li><a href="#"><img src="assets/icons/twitter-white.svg"></a></li>
+                                    <li><a href="#"><img src="assets/icons/instagram-white.svg"></a></li>
+                                    <li><a href="#"><img src="assets/icons/facebook-white.svg"></a></li>
+                                </ul>
+                            </div>
+                        </dialog>
                     </nav>
                 </div>
             </header>
@@ -75,9 +112,9 @@
                     <div class="divider"></div>
     
                     <div class="article-navigator">
-                        <button id="button_prev" disabled>Previous</button>
+                        <button id="button_prev" class="border-button" disabled>Previous</button>
                         <span>Page <span id="current_page">1</span> of <span id="total_pages">1</span></span>
-                        <button id="button_next" disabled>Next</button>
+                        <button id="button_next" class="border-button" disabled>Next</button>
                     </div>
                 </main>
     
@@ -86,7 +123,7 @@
                     <div>
                         <h2>WBC Shop</h2>
                         <p>Your shopping cart is empty</p>
-                        <button>Visit the shop</button>
+                        <button class="border-button">Visit the shop</button>
                     </div>
                     <div class="divider"></div>
                     <div>
@@ -95,7 +132,7 @@
                         <p>Copenhagen, Denmark</p>
                         <p>Dates: 25th - 27th August 2021</p>
                         <p>Theme: SENSORY</p>
-                        <button>Sign up now</button>
+                        <button class="border-button">Sign up now</button>
                     </div>
                     <div class="divider"></div>
                     <div>
@@ -185,7 +222,7 @@
                     </div>
                 </div>
             </footer>
-            <dialog id="post_dialog"></dialog>
+            <dialog class="article-dialog" id="article-dialog"></dialog>
         </div>
         <script src="js/scripts.js" type="text/javascript"></script>
     </body>
