@@ -124,8 +124,12 @@ function search(source) {
 
 function showSearchDialog() {
     searchDialog.showModal();
+}
+
+function closeSearchDialog() {
+    searchDialog.close();
     searchDialogBar.value = '';
-    search('dialog');
+    searchDialogResults.style.display = 'none'
 }
 
 function showNavDialog() {

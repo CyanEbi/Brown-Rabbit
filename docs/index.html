@@ -45,7 +45,7 @@
                         </div>
                         <dialog class="black-dialog" id="search-dialog">
                             <div class="black-dialog-content">
-                                <div class="search-button-container">
+                                <div class="search-button-container" onclick="closeSearchDialog()">
                                     <img src="assets/icons/search.svg" id="search-button" class="image-button search-button">
                                 </div>
                                 <input type="text" id="search-dialog-bar" placeholder="search" onkeyup="search('dialog')">
@@ -54,8 +54,8 @@
                         </dialog>
                         <dialog class="black-dialog" id="nav-dialog">
                             <div class="black-dialog-content">
-                                <div class="close-button-container">
-                                    <img src="assets/icons/close.svg" class="image-button" onclick="closeNavDialog()">
+                                <div class="close-button-container" onclick="closeNavDialog()">
+                                    <img src="assets/icons/close.svg" class="image-button">
                                 </div>
                                 <a href="#"><h2>About us</h2></a>
                                 <a href="#"><h2>Events</h2></a>
