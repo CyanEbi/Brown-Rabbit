@@ -36,8 +36,11 @@ window.onload = function () {
     slides.append(slides.children[0].cloneNode(true));
     slides.prepend(slides.children[totalSlides-1].cloneNode(true));
     slides.addEventListener('mousedown', onDragStart);
+    slides.addEventListener('touchstart', onDragStart);
     document.addEventListener('mousemove', onDrag);
+    document.addEventListener('touchmove', onDrag);
     document.addEventListener('mouseup', onDragEnd);
+    document.addEventListener('touchend', onDragEnd);
     slides.addEventListener('transitionend', onTransitionEnd);
     jumpToSlide(0);
     
@@ -142,15 +145,15 @@ function closeNavDialog() {
 
 function onDragStart(e) {
     slides.classList.remove('transitioning');
-    e.preventDefault();
+    //e.preventDefault();
 
     if (e.type == 'touchstart') {
-        
+        dragInitX = e.touches[0].clientX;
     } else {
-        isMouseDown = true;
         dragInitX = e.clientX;
-        slides.style.left = `${slides.offsetLeft}px`;
     }
+    isMouseDown = true;
+    slides.style.left = `${slides.offsetLeft}px`;
 }
 
 function onDrag(e) {
@@ -164,8 +167,15 @@ function onDrag(e) {
             isMouseDown = false;
             switchSlide(1);
         } else {
-            slides.style.left = `${slides.offsetLeft + e.clientX - dragInitX}px`;
-            dragInitX = e.clientX;
+            var newDragInitX
+            if (e.type == 'touchmove') {
+                newDragInitX = e.touches[0].clientX;
+            } else {
+                newDragInitX = e.clientX;
+            }
+
+            slides.style.left = `${slides.offsetLeft + newDragInitX - dragInitX}px`;
+            dragInitX = newDragInitX;
         }
 
     }
